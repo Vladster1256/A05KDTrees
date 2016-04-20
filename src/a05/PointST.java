@@ -77,7 +77,7 @@ public class PointST<Value>
 		}
 		else
 		{
-			bst.
+			
 		}
 		
 	}
