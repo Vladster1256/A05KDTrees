@@ -1,6 +1,7 @@
 package a05;
 
 import edu.princeton.cs.algs4.RedBlackBST;
+import edu.princeton.cs.algs4.Stack;
 
 public class PointST<Value>
 {
@@ -54,14 +55,31 @@ public class PointST<Value>
 	// all points that are inside the rectangle
 	public Iterable<Point2D> range(RectHV rect)
 	{
-		return null;
+		Stack<Point2D> stack = new Stack<Point2D>();
+		for(Point2D point: bst.keys())
+		{
+			if(rect.contains(point))
+			{
+				stack.push(point);
+			}
+		}
+		
+		return stack;
 		
 	}
 
+	// a nearest neighbor to point p; null if the symbol table is empty
 	public Point2D nearest(Point2D p)
 	{
-		return p;
-		// a nearest neighbor to point p; null if the symbol table is empty
+		if(isEmpty())
+		{
+			return null;
+		}
+		else
+		{
+			bst.
+		}
+		
 	}
 
 	public static void main(String[] args)
