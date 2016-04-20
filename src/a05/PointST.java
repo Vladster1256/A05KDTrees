@@ -71,13 +71,22 @@ public class PointST<Value>
 	// a nearest neighbor to point p; null if the symbol table is empty
 	public Point2D nearest(Point2D p)
 	{
+		RectHV rect = null;
+		Point2D returnable;
+		double distance = Double.MAX_VALUE;
 		if(isEmpty())
 		{
 			return null;
 		}
 		else
 		{
-			
+			for(Point2D point: bst.keys())
+			{
+				if(rect.distanceSquaredTo(p) < distance)
+				{
+					returnable =
+				}
+			}
 		}
 		
 	}
