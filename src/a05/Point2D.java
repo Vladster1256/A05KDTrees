@@ -2,37 +2,63 @@ package a05;
 
 public class Point2D implements Comparable<Point2D>
 {
+	private final double x; // x coordinate
+	private final double y; // y coordinate
+
 	public Point2D(double x, double y)
-	{ // construct the point (x, y)
+	{
+		if (Double.isInfinite(x) || Double.isInfinite(y))
+			throw new IllegalArgumentException("Coordinates must be finite");
+		if (Double.isNaN(x) || Double.isNaN(y))
+			throw new IllegalArgumentException("Coordinates cannot be NaN");
+		if (x == 0.0)
+			this.x = 0.0; // convert -0.0 to +0.0
+		else
+			this.x = x;
+
+		if (y == 0.0)
+			this.y = 0.0; // convert -0.0 to +0.0
+		else
+			this.y = y;
 	}
 
 	public double x()
 	{
-		return 0; // x-coordinate
+		return x; // x-coordinate
 	}
 
 	public double y()
 	{
-		return 0; // y-coordinate
+		return y; // y-coordinate
 	}
 
 	public double distanceSquaredTo(Point2D that)
 	{
-		return 0; // square of Euclidean distance between two points
+		double dx = this.x - that.x;
+        double dy = this.y - that.y;
+        return dx*dx + dy*dy;
 	}
 
 	public int compareTo(Point2D that)
 	{
-		return 0; // for use in an ordered symbol table
+		if (this.y < that.y) return -1;
+        if (this.y > that.y) return +1;
+        if (this.x < that.x) return -1;
+        if (this.x > that.x) return +1;
+        return 0;
 	}
 
 	public boolean equals(Object that)
 	{
-		return false; // does this point equal that object?
+		if (that == this) return true;
+        if (that == null) return false;
+        if (that.getClass() != this.getClass()) return false;
+        Point2D here = (Point2D) that;
+        return this.x == here.x && this.y == here.y;
 	}
 
 	public String toString()
 	{
-		return null; // string representation
+		return "(" + x + ", " + y + ")";
 	}
 }
