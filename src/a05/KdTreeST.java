@@ -1,62 +1,96 @@
 package a05;
 
 import edu.princeton.cs.algs4.RedBlackBST;
+import edu.princeton.cs.algs4.Stack;
 
 public class KdTreeST<Value>
 {
-	private RedBlackBST bst = new RedBlackBST();
+	private RedBlackBST<Point2D, Value> bst = new RedBlackBST<Point2D, Value>();
+
 	public KdTreeST()
 	{
 		// construct an empty symbol table of points
 	}
 
+	// is the symbol table empty?
 	public boolean isEmpty()
 	{
-		return false;
-		// is the symbol table empty?
+		if (bst.size() == 0)
+			return true;
+		else
+			return false;
 	}
 
 	public int size()
 	{
-		return 0;
-		// number of points
+		return bst.size();
 	}
 
 	public void put(Point2D p, Value val)
 	{
-		// associate the value val with point p
+		bst.put(p, val);
 	}
 
+	// value associated with point p
 	public Value get(Point2D p)
 	{
-		return null;
-		// value associated with point p
+		return bst.get(p);
 	}
 
+	// does the symbol table contain point p? 
 	public boolean contains(Point2D p)
 	{
-		return false;
-		// does the symbol table contain point p?
+		if (bst.contains(p))
+			return true;
+		else
+			return false;
 	}
 
+	// all points in the symbol table
 	public Iterable<Point2D> points()
 	{
-		return null;
-		// all points in the symbol table
+		return bst.keys();
 	}
 
+	// all points that are inside the rectangle
 	public Iterable<Point2D> range(RectHV rect)
 	{
-		return null;
-		// all points that are inside the rectangle
+		Stack<Point2D> stack = new Stack<Point2D>();
+		for(Point2D point: bst.keys())
+		{
+			if(rect.contains(point))
+			{
+				stack.push(point);
+			}
+		}
+		
+		return stack;
+		
 	}
 
+	// a nearest neighbor to point p; null if the symbol table is empty
 	public Point2D nearest(Point2D p)
 	{
-		return p;
-		// a nearest neighbor to point p; null if the symbol table is empty
+		Point2D returnable = new Point2D(0,0);
+		double distance = Double.MAX_VALUE;
+		if(isEmpty())
+		{
+			return null;
+		}
+		else
+		{
+			for(Point2D point: bst.keys())
+			{
+				if(p.distanceSquaredTo(point)<distance)
+				{
+					distance = p.distanceSquaredTo(point);
+					returnable = point;
+				}
+			}
+		}
+		return returnable;	
 	}
-
+	
 	public static void main(String[] args)
 	{
 		// unit testing of the methods (not graded)
