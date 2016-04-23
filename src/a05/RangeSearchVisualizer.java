@@ -1,6 +1,9 @@
 
 package a05;
 
+import edu.princeton.cs.algs4.In;
+import edu.princeton.cs.algs4.StdDraw;
+
 /******************************************************************************
  *  Compilation:  javac RangeSearchVisualizer.java
  *  Execution:    java RangeSearchVisualizer input.txt
@@ -15,10 +18,7 @@ package a05;
  *
  ******************************************************************************/
 
-import edu.princeton.cs.algs4.In;
-import edu.princeton.cs.algs4.Point2D;
-import edu.princeton.cs.algs4.RectHV;
-import edu.princeton.cs.algs4.StdDraw;
+
 
 public class RangeSearchVisualizer {
 

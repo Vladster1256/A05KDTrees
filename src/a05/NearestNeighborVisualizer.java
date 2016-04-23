@@ -1,5 +1,8 @@
 package a05;
 
+import edu.princeton.cs.algs4.In;
+import edu.princeton.cs.algs4.StdDraw;
+
 /******************************************************************************
  *  Compilation:  javac NearestNeighborVisualizer.java
  *  Execution:    java NearestNeighborVisualizer input.txt
@@ -13,14 +16,12 @@ package a05;
  *
  ******************************************************************************/
 
-import edu.princeton.cs.algs4.In;
-import edu.princeton.cs.algs4.Point2D;
-import edu.princeton.cs.algs4.StdDraw;
+
 
 public class NearestNeighborVisualizer {
 
     public static void main(String[] args) {
-        String filename = args[0];
+        String filename = "src/txt/input100K.txt";
         In in = new In(filename);
 
         StdDraw.show(0);
